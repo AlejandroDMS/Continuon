@@ -7,23 +7,23 @@ public class FuncionUnionSuave {
     private double fronteraDer;
     private double fronteraIzq;
 
-    private FuncionF fx;
-    private FuncionG gx;
+    private AbstractFuncion fx;
+    private AbstractFuncion gx;
 
-    public FuncionUnionSuave(double fronteraIzq, double fronteraDer, FuncionF fx, FuncionG gx) {
+    public FuncionUnionSuave(double fronteraIzq, double fronteraDer, AbstractFuncion fx, AbstractFuncion gx) {
         this.fronteraIzq = fronteraIzq;
         this.fronteraDer = fronteraDer;
         this.fx = fx;
         this.gx = gx;
     }
 
-    public Resultado getValorFuncionUnion(double x) {
+    public Resultado getResultadoFuncionUnion(double x) {
         double resultado;
         double resultadoFuncionOmega;
 
         resultadoFuncionOmega = funcionOmegaAjustada(x, fronteraIzq, fronteraDer);
         //Cuidado por ejemplo si la funcion g fuera log x, ya que explota si x toma valores negativos
-        resultado = (1 - resultadoFuncionOmega ) * fx.computarFuncionF(x) + resultadoFuncionOmega * gx.computarFuncionG(x);
+        resultado = (1 - resultadoFuncionOmega ) * fx.computarFuncion(x) + resultadoFuncionOmega * gx.computarFuncion(x);
         return new Resultado(resultado, true);
     }
 
