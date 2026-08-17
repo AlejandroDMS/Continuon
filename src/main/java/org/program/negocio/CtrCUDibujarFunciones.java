@@ -1,5 +1,9 @@
 package org.program.negocio;
 
+import org.program.negocio.funciones.FuncionCOS;
+import org.program.negocio.funciones.FuncionExpX;
+import org.program.negocio.funciones.FuncionSIN;
+import org.program.negocio.funciones.FuncionX;
 import org.program.utils.Lado;
 import org.program.utils.Resultado;
 
@@ -85,14 +89,51 @@ public class CtrCUDibujarFunciones {
         setFronteraDer(valor);
     }
 
-    public void procesarEventoCambiarCambiarFuncionF(int idFuncion) {
+    public void procesarEventoCambiarFuncion(int idFuncion, Lado lado){
+        AbstractFuncion nuevaFuncion;
+        double frontera = 0;
+
+        if(lado == Lado.IZQ){
+            frontera = fx.getFrontera();
+        } else if (lado == Lado.DER) {
+            frontera = gx.getFrontera();
+        }
+
+        switch(idFuncion){
+            case 0:
+                nuevaFuncion = new FuncionX(frontera, lado);
+                break;
+            case 1:
+                nuevaFuncion = new FuncionCOS(frontera, lado);
+                break;
+            case 2:
+                nuevaFuncion = new FuncionSIN(frontera, lado);
+                break;
+            case 3:
+                nuevaFuncion = new FuncionExpX(frontera, lado);
+                break;
+            default:
+                nuevaFuncion = null;
+        }
+
+        if(lado == Lado.IZQ){
+            cambiarFuncionF(nuevaFuncion);
+        } else if (lado == Lado.DER) {
+            cambiarFuncionG(nuevaFuncion);
+        }
+
+    }
+
+    public void procesarEventoCambiarFuncionF(int idFuncion) {
         AbstractFuncion nuevaFuncion;
 
         switch(idFuncion){
+            case 0:
+                nuevaFuncion = new FuncionX(fx.getFrontera(), Lado.IZQ);
+                break;
             case 1:
-                nuevaFuncion = new FuncionX(1, Lado.IZQ);
-            case 2:
-                nuevaFuncion = new FuncionCOS(3, Lado.IZQ);
+                nuevaFuncion = new FuncionCOS(fx.getFrontera(), Lado.IZQ);
+                break;
             default:
                 nuevaFuncion = null;
         }
@@ -100,15 +141,15 @@ public class CtrCUDibujarFunciones {
         cambiarFuncionF(nuevaFuncion);
     }
 
-    public void procesarEventoCambiarCambiarFuncionG(int idFuncion) {
+    public void procesarEventoCambiarFuncionG(int idFuncion) {
         AbstractFuncion nuevaFuncion;
 
         switch(idFuncion){
-            case 1:
-                nuevaFuncion = new FuncionX(1, Lado.IZQ);
+            case 0:
+                nuevaFuncion = new FuncionX(gx.getFrontera(), Lado.DER);
                 break;
-            case 2:
-                nuevaFuncion = new FuncionCOS(3, Lado.IZQ);
+            case 1:
+                nuevaFuncion = new FuncionCOS(gx.getFrontera(), Lado.DER);
                 break;
             default:
                 nuevaFuncion = null;
@@ -119,10 +160,12 @@ public class CtrCUDibujarFunciones {
 
     private void cambiarFuncionF(AbstractFuncion nuevaFuncion){
         fx = nuevaFuncion;
+        hx.setFx(fx);
     }
 
     private void cambiarFuncionG(AbstractFuncion nuevaFuncion){
         gx = nuevaFuncion;
+        hx.setGx(gx);
     }
 
 }

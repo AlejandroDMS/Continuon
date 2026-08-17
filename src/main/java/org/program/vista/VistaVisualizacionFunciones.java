@@ -83,9 +83,21 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
 
         jLabel3.setText("g(x)");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "cos(x)", "sin(x)", "e^x"}));
+        jComboBox1.setSelectedIndex(0);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "cos(x)", "sin(x)", "e^x"}));
+        jComboBox2.setSelectedIndex(1);
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jCheckBox1.setSelected(true);
 
@@ -213,6 +225,13 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
         controlador.eventoCambiarFronteraDer(evt);
     }
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {
+        controlador.eventoCambiarFuncionF(evt);
+    }
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {
+        controlador.eventoCambiarFuncionG(evt);
+    }
 
 
     /**

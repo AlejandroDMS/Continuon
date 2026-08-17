@@ -63,4 +63,11 @@ public class FuncionUnionSuave {
         this.fronteraDer = fronteraDer;
     }
 
+    public void setFx(AbstractFuncion fx) {
+        this.fx = fx;
+    }
+    public void setGx(AbstractFuncion gx) {
+        this.gx = gx;
+    }
+
 }

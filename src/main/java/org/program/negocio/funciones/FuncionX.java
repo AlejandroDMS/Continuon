@@ -1,8 +1,9 @@
-package org.program.negocio;
+package org.program.negocio.funciones;
 
+import org.program.negocio.AbstractFuncion;
 import org.program.utils.Lado;
 
-public class FuncionX extends AbstractFuncion{
+public class FuncionX extends AbstractFuncion {
 
     public FuncionX(double frontera, Lado ladoFrontera) {
         super(frontera, ladoFrontera);
