@@ -47,6 +47,7 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         panelCentralDibujado = new PanelCentralDibujado();
 
@@ -82,6 +83,7 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
         jLabel4.setText("f(x)");
 
         jLabel3.setText("g(x)");
+
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "x", "cos(x)", "sin(x)", "e^x"}));
         jComboBox1.setSelectedIndex(0);
@@ -170,7 +172,15 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
 
         panelLateralDerechoOpciones.add(jPanel2);
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Funcion de transicion:");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Smoothstep", "Smootherstep", "e^(-1/x)", "TanH" }));
+        jComboBox3.setSelectedIndex(2);
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("jLabel6");
 
@@ -179,20 +189,20 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel5))
-                                .addContainerGap(288, Short.MAX_VALUE))
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(202, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addContainerGap(118, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         panelLateralDerechoOpciones.add(jPanel1);
@@ -233,6 +243,7 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
         controlador.eventoCambiarFuncionG(evt);
     }
 
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) { controlador.eventoCambiarFuncionUnion(evt); }
 
     /**
      * @param args the command line arguments
@@ -279,6 +290,7 @@ public class VistaVisualizacionFunciones extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

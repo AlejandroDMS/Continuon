@@ -41,4 +41,11 @@ public class CtrVisualizacionFunciones {
         vista.repaint();
     }
 
+    public void eventoCambiarFuncionUnion(java.awt.event.ActionEvent evt){
+        javax.swing.JComboBox comboBox = (javax.swing.JComboBox) evt.getSource();
+        int valor = comboBox.getSelectedIndex();
+        this.controladorCU.procesarEventoCambiarFuncionTransicion(valor);
+        vista.repaint();
+    }
+
 }

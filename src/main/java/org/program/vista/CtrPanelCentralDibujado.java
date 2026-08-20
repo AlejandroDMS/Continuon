@@ -17,6 +17,11 @@ public class CtrPanelCentralDibujado {
         controladorCU = CtrCUDibujarFunciones.getInstancia();
     }
 
+    public void eventoDesplazarPantalla(double cambioX, double cambioY){
+        controladorCU.procesarEventoDesplazarPantalla(cambioX, cambioY);
+        vista.repaint();
+    }
+
     public void eventoPintarFunciones(Graphics2D g2d, int ancho, int alto, double escalaX, double escalaY) {
         double resolucion = vista.getResolucion();
 
